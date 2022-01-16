@@ -1,4 +1,5 @@
-import random, os, graphics, hard_words
+import os, random, graphics, hard_words
+"""Imports the external files for the graphics and the list of words"""
 
 # hangman game that works with boolean values and functions
 
@@ -26,7 +27,7 @@ def check_letters(letter, word):
 def monitor():
     os.system("clear")
     print(graphics.hangman[7-lives])
-    print(reveal)
+    print(' '.join([str(x) for x in reveal]))
     print('You have ', lives, ' shots left at this.')
 
 while gameOver == False and lives > 0:
@@ -47,4 +48,4 @@ monitor()
 if gameOver:
     print('Well done on not letting an innocent man hang')
 else:
-    print('You just let an innocent man hang through your incompetence. The word in question was: ' word)
+    print('You just let an innocent man hang through your incompetence. The word in question was: ', word)
