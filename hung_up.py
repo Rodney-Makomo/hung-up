@@ -31,25 +31,26 @@ def check_letters(letter, word):
 
 def monitor():
     """Monitors your progress and lives left"""
-    os.system("clear")
+    os.system('cls')
     print(graphics.hangman[7-lives])
-    print(' '.join([str(x) for x in reveal]))
-    print('You have ', lives, ' shots left at this.')
+    print(' '.join([str(e) for e in reveal]))
+    print('You have', lives, 'shots left at this.')
+
 
 while gameOver and lives > 0:
     """Prompts for user input"""
-    print(reveal)
+    monitor()
     attempt = input('Guess the entire word or a single letter: /n')
     attempt = attempt.upper()
 
     if attempt == word:
         gameOver = True
         reveal = word
-elif len(attempt) == 1 and attempt in word:
-    gameOver = check_letters(attempt, word)
-else:
-    lives -= 1
-monitor()
+    elif len(attempt) == 1 and attempt in word:
+        gameOver = check_letters(attempt, word)
+    else:
+        lives -= 1
+    monitor()
 
 
 if gameOver:
