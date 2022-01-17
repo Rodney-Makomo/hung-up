@@ -1,4 +1,7 @@
-import os, random, graphics, hard_words
+import os
+import random
+import graphics
+import hard_words
 """Imports the external files for the graphics and the list of words"""
 
 # hangman game that works with boolean values and functions
@@ -8,6 +11,7 @@ word = word.upper()
 reveal = list(len(word)*'_')
 lives = 7
 gameOver = False
+
 
 def check_letters(letter, word):
     """
@@ -24,6 +28,7 @@ def check_letters(letter, word):
     else:
         return False
 
+
 def monitor():
     """Monitors your progress and lives left"""
     os.system("clear")
@@ -31,10 +36,10 @@ def monitor():
     print(' '.join([str(x) for x in reveal]))
     print('You have ', lives, ' shots left at this.')
 
-while gameOver == False and lives > 0:
+while gameOver and lives > 0:
     """Prompts for user input"""
     print(reveal)
-    attempt = input('Guess the entire word or a single letter:')
+    attempt = input('Guess the entire word or a single letter: /n')
     attempt = attempt.upper()
 
     if attempt == word:
@@ -46,7 +51,8 @@ else:
     lives -= 1
 monitor()
 
+
 if gameOver:
     print('Well done on not letting an innocent man hang')
 else:
-    print('You just let an innocent man hang through your incompetence. The word in question was: ', word)
+    print('The innocent man has been hung. The word in question was: ', word)
